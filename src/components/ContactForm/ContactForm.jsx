@@ -2,17 +2,17 @@ import { useState } from 'react';
 import StyledContactForm from './StyledContactForm';
 import PropTypes from 'prop-types';
 
-function ContactForm({ addContact }) {
-  const [states, setStates] = useState({ name: '', number: '' });
+function ContactForm({ onAddContact }) {
+  const [newUser, setnewUser] = useState({ name: '', phone: '' });
 
   const onInputChange = e => {
-    setStates({ ...states, [e.target.name]: e.target.value });
+    setnewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
   const onFormSubmit = e => {
     e.preventDefault();
 
-    addContact(states);
+    onAddContact(newUser);
 
     e.target.reset();
   };
@@ -39,7 +39,7 @@ function ContactForm({ addContact }) {
           <input
             onChange={onInputChange}
             type="tel"
-            name="number"
+            name="phone"
             maxLength="12"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -55,5 +55,5 @@ function ContactForm({ addContact }) {
 export default ContactForm;
 
 ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
+  onAddContact: PropTypes.func.isRequired,
 };
