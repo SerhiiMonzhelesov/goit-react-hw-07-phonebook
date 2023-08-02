@@ -3,7 +3,7 @@ import {
   deleteUser,
   postNewUser,
   requestContacts,
-} from 'components/services/api';
+} from 'services/api';
 
 export const getContacts = createAsyncThunk('contacts/getContacts', () =>
   requestContacts()

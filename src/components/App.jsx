@@ -15,7 +15,7 @@ import {
   selectFilter,
   selectLoading,
 } from 'redux/selectors';
-import { errorInfo, warningInfo } from './services/report';
+import { errorInfo, warningInfo } from '../services/report';
 
 function App() {
   const users = useSelector(selectContacts);
